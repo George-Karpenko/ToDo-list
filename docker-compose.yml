@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+    depends_on:
+      - mongodb
+    volumes:
+      - ./backend:/usr/app
+      - /usr/app/node_modules
+    environment:
+      - TZ=Europe/Moscow
+      - APP_PORT=3000
+    ports: ["80:3000"]
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    volumes:
+      - ./database:/data/db
+    environment:
+      - TZ=Europe/Moscow
+      - MONGODB_DATABASE="test"
+    ports:
+      - 27017:27017
+    restart: always
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "8080:8080"
+    environment:
+      - TZ=Europe/Moscow
+      - BACKEND_URL=http://localhost
