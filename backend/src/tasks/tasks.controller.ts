@@ -40,7 +40,7 @@ export class TasksController {
     const isValid = mongoose.Types.ObjectId.isValid(id);
     if (!isValid) throw new HttpException('Invalid ID', 400);
     const updatedTask = await this.tasksService.update(id, updateTaskDto);
-    if (!updatedTask) throw new HttpException('Task Not Found', 404);
+    if (!updatedTask) throw new HttpException('There is no such task', 400);
     return updatedTask;
   }
 
@@ -49,7 +49,7 @@ export class TasksController {
     const isValid = mongoose.Types.ObjectId.isValid(id);
     if (!isValid) throw new HttpException('Invalid ID', 400);
     const deletedTask = await this.tasksService.delete(id);
-    if (!deletedTask) throw new HttpException('Task Not Found', 404);
+    if (!deletedTask) throw new HttpException('There is no such task', 400);
     return;
   }
 }

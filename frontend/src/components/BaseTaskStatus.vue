@@ -32,7 +32,7 @@ const status = computed(() => {
   if (differenceInSeconds.value <= 0) {
     return "Просрочена задача";
   }
-  return `Осталось врением ${time.value}`;
+  return `Осталось времени: ${time.value}`;
 });
 </script>
 

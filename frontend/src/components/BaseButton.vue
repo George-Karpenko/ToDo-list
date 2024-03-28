@@ -55,14 +55,14 @@ const classes = [
   cursor: not-allowed;
 }
 
-.button:active {
-  --lightness: 60%;
-}
-
 @media (hover: hover) {
   .button:hover {
     --lightness: 40%;
   }
+}
+
+.button:active {
+  --lightness: 60%;
 }
 
 @media (width >= 576px) {

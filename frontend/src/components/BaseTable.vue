@@ -45,7 +45,7 @@ defineProps({
           </td>
         </tr>
       </template>
-      <tr class="table__row">
+      <tr v-else class="table__row">
         <td :colspan="header.length" class="table__cell">
           {{ textWithEmptyItems }}
         </td>

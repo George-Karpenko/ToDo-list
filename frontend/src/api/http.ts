@@ -2,7 +2,7 @@ import axios from "axios";
 import { useErrorStore } from "@/store/error";
 
 export default () => {
-  const baseURL = "http://localhost/";
+  const baseURL = "http://localhost/api/";
   const instance = axios.create({
     baseURL: baseURL,
     headers: {
